@@ -1,10 +1,8 @@
 using System;
-
 using Orleans;
 using Orleans.Runtime.Configuration;
-using Orleans.Runtime.Host;
 
-namespace Nhq01MyFirstOrleansApp
+namespace Nhq01MyFirstOrleansApp.SiloHost
 {
     /// <summary>
     /// Orleans test silo host
@@ -15,7 +13,7 @@ namespace Nhq01MyFirstOrleansApp
         {
             // First, configure and start a local silo
             var siloConfig = ClusterConfiguration.LocalhostPrimarySilo();
-            var silo = new SiloHost("TestSilo", siloConfig);
+            var silo = new Orleans.Runtime.Host.SiloHost("TestSilo", siloConfig);
             silo.InitializeOrleansSilo();
             silo.StartOrleansSilo();
 
