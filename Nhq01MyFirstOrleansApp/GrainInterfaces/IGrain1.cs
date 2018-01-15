@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Orleans;
 
 namespace Nhq01MyFirstOrleansApp.GrainInterfaces
@@ -7,6 +8,6 @@ namespace Nhq01MyFirstOrleansApp.GrainInterfaces
     /// </summary>
     public interface IGrain1 : IGrainWithGuidKey
     {
-
+        Task<string> SayHello();
     }
 }

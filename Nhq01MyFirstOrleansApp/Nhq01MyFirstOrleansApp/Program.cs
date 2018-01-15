@@ -1,4 +1,5 @@
 using System;
+using Nhq01MyFirstOrleansApp.GrainInterfaces;
 using Orleans;
 using Orleans.Runtime.Configuration;
 
@@ -26,9 +27,8 @@ namespace Nhq01MyFirstOrleansApp.SiloHost
 
             Console.WriteLine("Client connected.");
 
-            //
-            // This is the place for your test code.
-            //
+            var grain = client.GetGrain<IGrain1>(Guid.Empty);
+            Console.WriteLine(grain.SayHello().Result);
 
             Console.WriteLine("\nPress Enter to terminate...");
             Console.ReadLine();
