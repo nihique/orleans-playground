@@ -48,15 +48,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GrainInterfaces\GrainInterfaces.csproj">
-      <Project>{b883085f-6155-419e-a157-0f0b92fc2dfa}</Project>
-      <Name>GrainInterfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Grains\Grains.csproj">
-      <Project>{512d7400-aa90-46ae-add2-e3464cded622}</Project>
-      <Name>Grains</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
