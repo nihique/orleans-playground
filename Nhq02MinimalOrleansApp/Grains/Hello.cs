@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
+using Orleans;
 
 namespace Grains
 {
-    public class Hello : GrainInterfaces.IHello
+    public class Hello : Grain, GrainInterfaces.IHello
     {
         public Task<string> SayHello(string greeting)
         {
