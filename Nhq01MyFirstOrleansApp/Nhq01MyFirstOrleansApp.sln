@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiloHost", "Nhq01MyFirstOrleansApp\SiloHost.csproj", "{F35C78A7-E375-4DC0-866C-9796A159C8F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Nhq01MyFirstOrleansApp\Client.csproj", "{F35C78A7-E375-4DC0-866C-9796A159C8F2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrainInterfaces", "GrainInterfaces\GrainInterfaces.csproj", "{0A2A384F-452C-45B9-9044-267FECAE9F73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grains", "Grains\Grains.csproj", "{F8623A96-39B3-4C11-8419-74C32CF13C2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrainsAndHost", "Grains\GrainsAndHost.csproj", "{F8623A96-39B3-4C11-8419-74C32CF13C2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

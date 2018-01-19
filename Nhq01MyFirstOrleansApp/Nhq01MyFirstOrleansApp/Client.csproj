@@ -117,9 +117,9 @@
       <Project>{0A2A384F-452C-45B9-9044-267FECAE9F73}</Project>
       <Name>GrainInterfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Grains\Grains.csproj">
+    <ProjectReference Include="..\Grains\GrainsAndHost.csproj">
       <Project>{f8623a96-39b3-4c11-8419-74c32cf13c2d}</Project>
-      <Name>Grains</Name>
+      <Name>GrainsAndHost</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

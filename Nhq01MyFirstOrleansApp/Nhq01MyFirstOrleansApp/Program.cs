@@ -12,36 +12,31 @@ namespace Nhq01MyFirstOrleansApp.SiloHost
     /// </summary>
     public class Program
     {
+        private const int SiloPort = 30000;
+
         [DllImport("user32.dll")]
         public static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
 
         static void Main(string[] args)
         {
-            MaximizeWindow();
+            //MaximizeWindow();
 
-            // First, configure and start a local silo
-            var siloConfig = ClusterConfiguration.LocalhostPrimarySilo();
-            var silo = new Orleans.Runtime.Host.SiloHost("TestSilo", siloConfig);
-            silo.InitializeOrleansSilo();
-            silo.StartOrleansSilo();
-
-            Console.WriteLine("Silo started.");
-
-            // Then configure and connect a client.
-            var clientConfig = ClientConfiguration.LocalhostSilo();
-            var client = new ClientBuilder().UseConfiguration(clientConfig).Build();
-            client.Connect().Wait();
-
-            DoSomeClientWork(client);
-
-            Console.WriteLine("Client connected.");
-
-            Console.WriteLine("\nPress Enter to terminate...");
+            Console.WriteLine("Waiting for Orleans Silo to start. Press Enter to proceed...");
             Console.ReadLine();
 
-            // Shut down
-            client.Close();
-            silo.ShutdownOrleansSilo();
+            var config = ClientConfiguration.LocalhostSilo(SiloPort);
+            GrainClient.Initialize(config);
+            //var client = new ClientBuilder().UseConfiguration(config).Build();
+            //client.Connect().Wait();
+
+            //DoSomeClientWork(client);
+
+            //Console.WriteLine("Client connected.");
+
+            //Console.WriteLine("\nPress Enter to terminate...");
+            //Console.ReadLine();
+
+            //client.Close();
         }
 
         private static void DoSomeClientWork(IClusterClient client)
