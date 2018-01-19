@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Nhq01MyFirstOrleansApp.GrainInterfaces;
 using Orleans;
 using Orleans.Runtime.Configuration;
@@ -10,8 +12,13 @@ namespace Nhq01MyFirstOrleansApp.SiloHost
     /// </summary>
     public class Program
     {
+        [DllImport("user32.dll")]
+        public static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
+
         static void Main(string[] args)
         {
+            MaximizeWindow();
+
             // First, configure and start a local silo
             var siloConfig = ClusterConfiguration.LocalhostPrimarySilo();
             var silo = new Orleans.Runtime.Host.SiloHost("TestSilo", siloConfig);
@@ -25,10 +32,9 @@ namespace Nhq01MyFirstOrleansApp.SiloHost
             var client = new ClientBuilder().UseConfiguration(clientConfig).Build();
             client.Connect().Wait();
 
-            Console.WriteLine("Client connected.");
+            DoSomeClientWork(client);
 
-            var grain = client.GetGrain<IGrain1>(Guid.Empty);
-            Console.WriteLine(grain.SayHello().Result);
+            Console.WriteLine("Client connected.");
 
             Console.WriteLine("\nPress Enter to terminate...");
             Console.ReadLine();
@@ -36,6 +42,18 @@ namespace Nhq01MyFirstOrleansApp.SiloHost
             // Shut down
             client.Close();
             silo.ShutdownOrleansSilo();
+        }
+
+        private static void DoSomeClientWork(IClusterClient client)
+        {
+            var grain = client.GetGrain<IGrain1>(Guid.Empty);
+            Console.WriteLine(grain.SayHello().Result);
+        }
+
+        private static void MaximizeWindow()
+        {
+            Process p = Process.GetCurrentProcess();
+            ShowWindow(p.MainWindowHandle, 3); //SW_MAXIMIZE = 3
         }
     }
 }
