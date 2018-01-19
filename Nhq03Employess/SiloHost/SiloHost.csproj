@@ -112,6 +112,16 @@
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GrainInterfaces\GrainInterfaces.csproj">
+      <Project>{d52bfcf8-57d3-4ebb-917c-87f8947be9e6}</Project>
+      <Name>GrainInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Grains\Grains.csproj">
+      <Project>{f8bcb0f7-1362-4de6-9a2f-c9886a181237}</Project>
+      <Name>Grains</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Orleans.CounterControl.1.5.0\build\Microsoft.Orleans.CounterControl.targets" Condition="Exists('packages\Microsoft.Orleans.CounterControl.1.5.0\build\Microsoft.Orleans.CounterControl.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

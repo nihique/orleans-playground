@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using GrainInterfaces;
 using Orleans;
 using Orleans.Runtime.Configuration;
 
@@ -33,9 +35,7 @@ namespace Nhq.OrleansPlayground.Employees.SiloHost
 
             Console.WriteLine("Client connected.");
 
-            //
-            // This is the place for your test code.
-            //
+            DoWork(client).Wait();
 
             Console.WriteLine("\nPress Enter to terminate...");
             Console.ReadLine();
@@ -43,6 +43,13 @@ namespace Nhq.OrleansPlayground.Employees.SiloHost
             // Shut down
             client.Close();
             silo.ShutdownOrleansSilo();
+        }
+
+        private static async Task DoWork(IClusterClient client)
+        {
+            var employee = client.GetGrain<IEmployeeGrain>(Guid.NewGuid());
+            var hello = await employee.Hello();
+            Console.WriteLine(hello);
         }
 
         private static void MaximizeWindow()
